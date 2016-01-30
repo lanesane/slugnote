@@ -227,7 +227,7 @@ function getTokenTTL(req, res) {
 		if (ttl > 0) {
             respond(res, 200, 'getTokenTTL', {
             	ttl: ttl
-            })    
+            });
         }
         else {
             respond(res, 200, 'getTokenTTL', {
