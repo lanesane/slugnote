@@ -153,7 +153,7 @@ No authentication yet, to be determined at a later time.
 #### Response
     {
         "status" : 200,
-        "call" : "getNoteInfo",
+        "call" : "getNote",
         "data" : {
             "noteUser" : "username",
             "noteTime" : "2014-03-29:10:10",
