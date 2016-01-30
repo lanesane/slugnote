@@ -1,6 +1,10 @@
 var config = require('../config');
 var respond = require('./response').respond;
 var Note = require('./note');
+var University = require('./university');
+var Course = require('./course');
+var Teacher = require('./teacher');
+var Term = require('./term');
 var ObjectId = require('mongoose').Types.ObjectId;
 
 var async = require('async');

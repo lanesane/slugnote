@@ -9,6 +9,10 @@ var fs = require('fs');
 
 var routes = require('./objects/routes');
 var note = require('./objects/note');
+var university = require('./objects/university');
+var course = require('./objects/course');
+var teacher = require('./objects/teacher');
+var term = require('./objects/term');
 
 process.env.NODE_ENV = 'development'; // change to production
 
