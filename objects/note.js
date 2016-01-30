@@ -10,17 +10,13 @@ var async = require('async');
 // Structure of the Note class
 var noteSchema = mongoose.Schema({
 	user: { type: String, default: "" },
-	format: { type: Number, required: true },
-	instances: { type: Number, required: true },
+	format: { type: String, required: true },
 	data: [],
 	name: { type: String, required: true },
 	description: { type: String, default: "" },
 	course_id: { type: Number, required: true },
-	course_name: { type: String, required: true },
 	term_id: { type: Number, required: true },
-	term_name: { type: String, required: true },
 	teacher_id: { type: Number },
-	teacher_name: { type: String },
 	time: { type: Date, required: true },
 	createdAt: { type: Date, default: Date.now },
 	modifiedAt: { type: Date, default: Date.now }

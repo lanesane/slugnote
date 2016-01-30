@@ -70,27 +70,10 @@ function createNote(req, res) {
 	authenticate(req, res, 'createNote', function(ex, authUserId) {
 		if (ex) throw ex;
 
-		var _format = 0;
-		switch(req.body.noteFormat) {
-			case "PDF":
-				format = 0;
-				break;
-			case "JPEG":
-				format = 1;
-				break;
-			case "String":
-				format = 2;
-				break;
-			default:
-				// error - create throws
-				break;
-		};
-
 		var note = new Note({
 			user: req.body.noteUser,
-			format: _format,
-			instances: req.body.noteInstances,
-			// data: [], - need to parse data
+			format: req.body.noteFormat,
+			data: req.body.noteData,
 			name: req.body.noteInfo.name,
 			description: req.body.noteInfo.description,
 			course_id: req.body.noteInfo.course.id,
@@ -125,7 +108,48 @@ function getNoteInfo(req, res) {
 						noteUser : note.user,
 						noteTime : note.time,
 						noteFormat : note.format,
-						noteInstances : note.instances,
+						noteInfo : {
+							name : ,
+							description : ,
+							course : {
+								id : ,
+								name : 
+							}, 
+							term : {
+								id : ,
+								name : 
+							},
+							teacher : {
+								id : ,
+								name : 
+							}
+						}
+					});
+				}
+				else {
+					respond(res, 1005, 'getNoteInfo');
+				}
+			});
+		});
+	});
+}
+
+// Gets a note
+function getNote(req, res) {
+	authenticate(req, res, 'getNote', function(ex, authUserId) {
+
+		getObjectId(res, 'getNote', req.body.noteId, function(ex, noteId) {
+			Note.findById(noteId, function(ex, note) {
+				if (ex) throw ex;
+
+				if (note) {
+					var objects = new Array();
+
+					respond(res, 200, 'getNote', {
+						noteUser : note.user,
+						noteTime : note.time,
+						noteFormat : note.format,
+						noteData : note.data,
 						noteInfo : {
 							name : ,
 							description : ,
