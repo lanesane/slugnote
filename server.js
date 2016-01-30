@@ -1,9 +1,9 @@
 var express = require('express');
-var mongoose = require('mongoose');
+var mongoose = require('mongoose')
 var http = require('http');
 var bodyParser = require('body-parser');
 var logger = require('morgan');
-var errorHandler = require('errorhandler');
+var errorHandler = require('errorhandler')
 var config = require('./config');
 var fs = require('fs');
 
