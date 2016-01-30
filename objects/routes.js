@@ -143,11 +143,11 @@ function getNoteInfo(req, res) {
 												}
 											});
 										}
-									}
+									});
 								}
-							}
+							});
 						}
-					}
+					});
 				}
 				else {
 					respond(res, 1005, 'getNoteInfo');
@@ -205,11 +205,11 @@ function getNote(req, res) {
 												}
 											});
 										}
-									}
+									});
 								}
-							}
+							});
 						}
-					}
+					});
 				}
 				else {
 					respond(res, 1005, 'getNoteInfo');
