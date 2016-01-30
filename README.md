@@ -99,7 +99,7 @@ No authentication yet, to be determined at a later time.
         "status" : 200,
         "call" : "createNote",
         "data" : {
-            "eventId" : "533700001bd3b21d0eba3498"
+            "noteId" : "533700001bd3b21d0eba3498"
     }
 
 ### getNoteInfo
