@@ -81,11 +81,8 @@ function createNote(req, res) {
 			name: req.body.noteInfo.name,
 			description: req.body.noteInfo.description,
 			course_id: req.body.noteInfo.course.id,
-			course_name: req.body.noteInfo.course.name,
 			term_id: req.body.noteInfo.term.id,
-			term_name: req.body.noteInfo.term.name,
 			teacher_id: req.body.noteInfo.teacher.id,
-			teacher_name: req.body.noteInfo.teacher.name,
 			time: req.body.noteTime
 		});
 
@@ -108,27 +105,49 @@ function getNoteInfo(req, res) {
 				if (ex) throw ex;
 
 				if (note) {
-					respond(res, 200, 'getNoteInfo', {
-						noteUser : note.user,
-						noteTime : note.time,
-						noteFormat : note.format,
-						noteInfo : {
-							name : ,
-							description : ,
-							course : {
-								id : ,
-								name : 
-							}, 
-							term : {
-								id : ,
-								name : 
-							},
-							teacher : {
-								id : ,
-								name : 
+
+					Course.findById(note.course_id, function(ex, currentCourse) {
+						if (ex) throw ex;
+						
+						if (currentCourse) {
+
+							Term.findById(note.term_id, function(ex, currentTerm) {
+								if (ex) throw ex;
+								
+								if (currentTerm) {
+
+									Teacher.findById(note.teacher_id, function(ex, currentTeacher) {
+										if (ex) throw ex;
+										
+										if (currentTeacher) {
+
+											respond(res, 200, 'getNoteInfo', {
+												noteUser : note.user,
+												noteTime : note.time,
+												noteFormat : note.format,
+												noteInfo : { 
+													name : note.name,
+													description : note.description,
+													course : {
+														id : currentCourse.id,
+														name : currentCourse.name
+													}, 
+													term : {
+														id : currentTerm.id,
+														name : currentTerm.name
+													},
+													teacher : {
+														id : currentTeacher.id,
+														name : currentTeacher.name
+													}
+												}
+											});
+										}
+									}
+								}
 							}
 						}
-					});
+					}
 				}
 				else {
 					respond(res, 1005, 'getNoteInfo');
@@ -147,30 +166,50 @@ function getNote(req, res) {
 				if (ex) throw ex;
 
 				if (note) {
-					var objects = new Array();
 
-					respond(res, 200, 'getNote', {
-						noteUser : note.user,
-						noteTime : note.time,
-						noteFormat : note.format,
-						noteData : note.data,
-						noteInfo : {
-							name : ,
-							description : ,
-							course : {
-								id : ,
-								name : 
-							}, 
-							term : {
-								id : ,
-								name : 
-							},
-							teacher : {
-								id : ,
-								name : 
+					Course.findById(note.course_id, function(ex, currentCourse) {
+						if (ex) throw ex;
+						
+						if (currentCourse) {
+
+							Term.findById(note.term_id, function(ex, currentTerm) {
+								if (ex) throw ex;
+								
+								if (currentTerm) {
+
+									Teacher.findById(note.teacher_id, function(ex, currentTeacher) {
+										if (ex) throw ex;
+										
+										if (currentTeacher) {
+
+											respond(res, 200, 'getNoteInfo', {
+												noteUser : note.user,
+												noteTime : note.time,
+												noteFormat : note.format,
+												noteData : note.data,
+												noteInfo : { 
+													name : note.name,
+													description : note.description,
+													course : {
+														id : currentCourse.id,
+														name : currentCourse.name
+													}, 
+													term : {
+														id : currentTerm.id,
+														name : currentTerm.name
+													},
+													teacher : {
+														id : currentTeacher.id,
+														name : currentTeacher.name
+													}
+												}
+											});
+										}
+									}
+								}
 							}
 						}
-					});
+					}
 				}
 				else {
 					respond(res, 1005, 'getNoteInfo');
