@@ -66,6 +66,7 @@ No authentication yet, to be determined at a later time.
 #### Request
     {
         "authToken" : "Gk1nJqj2X+IppQ7K0710EzUBcZKsq1+l3bXdfIMxP8w1L3b+rG2Uf4SIO+42UTGhF2G8XZNuJUyh/ipx1HTG4w==",
+        "noteUser" : "username",
         "noteTime" : "2014-03-29:10:10",
         "noteFormat" : "String, PDF, JPEG",
         "noteInstances" : 012,
@@ -77,7 +78,7 @@ No authentication yet, to be determined at a later time.
         },
         "noteInfo" : {
             "name" : "Example Note",
-            "description" : "This note is an example from which all",
+            "description" : "This note is an example.",
             "class" : {
                 "id" : 1234567,
                 "name" : "Class Name"
@@ -116,12 +117,57 @@ No authentication yet, to be determined at a later time.
         "status" : 200,
         "call" : "getNoteInfo",
         "data" : {
+            "noteUser" : "username",
             "noteTime" : "2014-03-29:10:10",
             "noteFormat" : "String, PDF, JPEG",
             "noteInstances" : 012,
             "noteInfo" : {
                 "name" : "Example Note",
-                "description" : "This note is an example from which all",
+                "description" : "This note is an example.",
+                "class" : {
+                    "id" : 1234567,
+                    "name" : "Class Name"
+                },
+                "term" : {
+                    "id" : 012345,
+                    "name" : "{Season} Semester"
+                },
+                "teacher" : {
+                    "id" : 012345,
+                    "name" : "First Last"
+                }
+            }
+        }
+    }
+
+### getNote
+#### URI
+`post/note/getnote`
+
+#### Request
+    {
+        "authToken" : "Gk1nJqj2X+IppQ7K0710EzUBcZKsq1+l3bXdfIMxP8w1L3b+rG2Uf4SIO+42UTGhF2G8XZNuJUyh/ipx1HTG4w==",
+        "noteId" : "533700001bd3b21d0eba3498"
+    }
+
+#### Response
+    {
+        "status" : 200,
+        "call" : "getNoteInfo",
+        "data" : {
+            "noteUser" : "username",
+            "noteTime" : "2014-03-29:10:10",
+            "noteFormat" : "String, PDF, JPEG",
+            "noteInstances" : 012,
+            "noteData" : {
+                "1": "noteInstance-1",
+                "2" : "noteInstance-2",
+                ...,
+                "n" : "noteInstance-n"
+            },
+            "noteInfo" : {
+                "name" : "Example Note",
+                "description" : "This note is an example.",
                 "class" : {
                     "id" : 1234567,
                     "name" : "Class Name"
