@@ -1,9 +1,9 @@
 var express = require('express');
-var mongoose = require('mongoose')
+var mongoose = require('mongoose');
 var http = require('http');
 var bodyParser = require('body-parser');
 var logger = require('morgan');
-var errorHandler = require('errorhandler')
+var errorHandler = require('errorhandler');
 var config = require('./config');
 var fs = require('fs');
 
@@ -20,6 +20,9 @@ process.env.NODE_ENV = 'development'; // change to production
 mongoose.connect('mongodb://' + config.db.host + '/' + config.db.name);
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function callback () {
+	console.log("Server Started.");
+});
 
 // Initialize express app
 var app = express();
