@@ -17,11 +17,12 @@ var term = require('./objects/term');
 process.env.NODE_ENV = 'development'; // change to production
 
 // Create the database connection
-mongoose.connect('mongodb://' + config.db.host + '/' + config.db.name);
-var db = mongoose.connection;
-db.once('open', function callback () {
-	console.log("Server: " + config.db.host + "/" + config.server.port + " with db " + config.db.name);
+mongoose.connect('mongodb://' + config.db.host + '/' + config.db.name, function(err, db) {
+	if(err) { return console.dir(err); }
+
+	console.log("connected.");
 });
+
 
 // Initialize express app
 var app = express();
