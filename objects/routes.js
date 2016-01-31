@@ -81,9 +81,7 @@ function createUser(req, res) {
     user.setPassword(req.body.userPassword, function(ex) {
         if (ex) throw ex;
 
-        user.save(user, function(ex, user) {
-            if (ex) return console.error(ex);
-
+        user.save().then(function(user) {
             createToken(req, res, user, function(ex, token) {
                 if (ex) throw ex;
 
