@@ -10,7 +10,6 @@ module.exports = {
 	},
 	db: {
 		host: "127.0.0.1",
-		port: 8080,
 		name: "test"
 	},
 	log: {
@@ -22,7 +21,7 @@ module.exports = {
 	},
 	server: {
 		version: '0.0.1',
-		port: 8080,
+		port: 27017,
 		name: 'SlugNote API'
 	},
 	ticket: {
