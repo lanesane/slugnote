@@ -76,33 +76,31 @@ function createToken(req, res, callback) {
 // Creates a user
 function createUser(req, res) {
 	console.log("yo");
-	User.find({ email: req.body.userEmail },function (ex, users) {
-		if (!users.length){
-			var user = new User({
-				email: req.body.userEmail,
-				name: req.body.userName
-			});
-			user.setPassword(req.body.userPassword, function(ex) {
+	if (!users.length){
+		var user = new User({
+			email: req.body.userEmail,
+			name: req.body.userName
+		});
+		user.setPassword(req.body.userPassword, function(ex) {
+			if (ex) throw ex;
+
+			user.save(function(ex) {
 				if (ex) throw ex;
 
-				user.save(function(ex) {
+				createToken(req, res, user, function(ex, user, token) {
 					if (ex) throw ex;
 
-					createToken(req, res, user, function(ex, user, token) {
-						if (ex) throw ex;
-
-						respond(res, 200, 'createUserEmail', {
-							userId: user.id,
-							authToken: token
-						});
+					respond(res, 200, 'createUserEmail', {
+						userId: user.id,
+						authToken: token
 					});
 				});
 			});
-		}
-		else {
-			respond(res, 1002, 'createUserEmail');
-		}
-	});
+		});
+	}
+	else {
+		respond(res, 1002, 'createUserEmail');
+	}
 	console.log("what");
 }
 
