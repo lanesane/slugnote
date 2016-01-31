@@ -286,7 +286,7 @@ function createUniversity(req, res) {
 }
 
 // Gets a university's information, mainly used for a list of courses from a university
-function getUniversityInfo(req, res) {
+function getUniversityList(req, res) {
     authenticate(req, res, 'getUniversityInfo', function(ex, authUserId) {
 
         getObjectId(res, 'getUniversityInfo', req.body.universityId, function(ex, universityId) {
@@ -352,7 +352,7 @@ module.exports = {
     createNote: createNote,
     getNoteInfo: getNoteInfo,
     getNote: getNote,
-    createUniversity: createUniversity,
-    getUniversityInfo: getUniversityInfo,
+    createUniversity: createUniversity,\
+    getUniversityList: getUniversityList,
     getTokenTTL: getTokenTTL
 }

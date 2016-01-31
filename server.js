@@ -58,6 +58,7 @@ app.post('/post/university/getUniversityInfo', routes.getUniversityInfo);
 app.post('/post/user/getTokenTTL', routes.getTokenTTL);
 app.post('/post/user/createUser', routes.createUser);
 app.post('/post/user/getUserInfo', routes.getUserInfo);
+app.post('/post/university/list', routes.getUniversityList);
 
 
 var server = http.createServer(app);
