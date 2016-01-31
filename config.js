@@ -9,7 +9,7 @@ module.exports = {
 		authDelay: 400 // Change based on the computer it's running on... or just make it something relatively high
 	},
 	db: {
-		host: "localhost",
+		host: "127.0.0.1",
 		name: "test"
 	},
 	log: {
