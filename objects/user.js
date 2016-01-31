@@ -21,9 +21,9 @@ var userSchema = new mongoose.Schema({
 });
 
 // Creates a virtual id field on the object that can be used in place of _id
-userSchema.virtual('id').get(function() {
+/* userSchema.virtual('id').get(function() {
 	return this._id;
-});
+});*/
 
 // On save, changed modifiedAt 
 /*8 serSchema.pre('save', function(next) {
