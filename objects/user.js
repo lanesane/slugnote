@@ -55,7 +55,7 @@ userSchema.methods.setPassword = function(password, callback) {
 			});
 		}
 	);
-};
+}
 
 // Checks the password against the database, then calls callback
 userSchema.methods.checkPassword = function(password, callback) {
