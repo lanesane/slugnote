@@ -8,8 +8,6 @@ var Term = require('./term');
 var User = require('./user');
 var ObjectId = require('mongoose').Types.ObjectId;
 var crypto = require('crypto');
-var monk = require('monk');
-var Db = monk('localhost:27017/test');
 
 var async = require('async');
 var redis = require('redis');
