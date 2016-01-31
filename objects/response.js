@@ -10,12 +10,12 @@ var config = require('../config');
 // 	}
 
 function respond(res, status, apiCall, data) {
-	status = status || 200;
+	status = this.status || 200;
 
 	res.send({
-		status: status,
+		status: this.status,
 		call: apiCall,
-		data: data
+		data: this.data
 	});
 }
 
