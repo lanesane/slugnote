@@ -21,7 +21,7 @@ mongoose.connect('mongodb://' + config.db.host + '/' + config.db.name);
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function callback () {
-	console.log("Server Started on Port ." + config.server.port);
+	console.log("Server: " config.db.host + "/" + config.server.port + " with db " + config.db.name);
 });
 
 // Initialize express app
