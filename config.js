@@ -21,7 +21,7 @@ module.exports = {
 	},
 	server: {
 		version: '0.0.1',
-		port: 27017,
+		port: 8080,
 		name: 'SlugNote API'
 	},
 	ticket: {
