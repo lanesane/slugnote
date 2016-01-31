@@ -91,7 +91,7 @@ function createUser(req, res) {
 		var collection = Db.collection('user');
 
 	    // Submit to the DB
-	    collection.insert(user, function (err, doc) {
+	    user.insert(user, function (err, doc) {
 	        if (err) throw err;
 
 	        createToken(req, res, user, function(ex, user, token) {
