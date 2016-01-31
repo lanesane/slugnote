@@ -352,7 +352,7 @@ module.exports = {
     createNote: createNote,
     getNoteInfo: getNoteInfo,
     getNote: getNote,
-    createUniversity: createUniversity,\
+    createUniversity: createUniversity,
     getUniversityList: getUniversityList,
     getTokenTTL: getTokenTTL
 }
