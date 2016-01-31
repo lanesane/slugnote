@@ -267,7 +267,6 @@ function getTokenTTL(req, res) {
 
 module.exports = {
 	checkRequest: checkRequest,
-	createToken: createToken,
 	createNote: createNote,
 	getNoteInfo: getNoteInfo,
 	getNote: getNote,
