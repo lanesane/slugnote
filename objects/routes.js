@@ -85,6 +85,23 @@ function createUser(req, res) {
 		if (ex) throw ex;
 
 		console.log("1: " + user);
+
+		var collection = req.db.get('user');
+
+	    // Submit to the DB
+	    collection.insert(user, function (err, doc) {
+	        if (err) throw err;
+
+	        createToken(req, res, user, function(ex, user, token) {
+				if (ex) throw ex;
+
+				respond(res, 200, 'createUser', {
+					userId: user.id,
+					authToken: token
+				})
+			})
+	    });
+	    /*
 		user.save(function(ex) {
 			console.log("2: " + user);
 			if (ex) throw ex;
@@ -97,7 +114,7 @@ function createUser(req, res) {
 					authToken: token
 				})
 			})
-		})
+		}) */
 	})
 	console.log("what");
 }
