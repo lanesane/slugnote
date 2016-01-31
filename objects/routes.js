@@ -85,7 +85,7 @@ function createUser(req, res) {
 		if (ex) throw ex;
 
 		console.log("1: " + user);
-	})
+	});
 	user.save(function(ex) {
 		if (ex) return console.error(ex);
 
@@ -97,7 +97,7 @@ function createUser(req, res) {
 				userId: user.id,
 				authToken: token
 			})
-		})
+		});
 	});
 	console.log("what");
 }
