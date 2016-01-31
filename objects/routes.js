@@ -7,6 +7,7 @@ var Teacher = require('./teacher');
 var Term = require('./term');
 var User = require('./user');
 var ObjectId = require('mongoose').Types.ObjectId;
+var Db = require('mongoose').Db;
 var crypto = require('crypto');
 
 var async = require('async');
@@ -86,7 +87,7 @@ function createUser(req, res) {
 
 		console.log("1: " + user);
 
-		var collection = db.collection('user');
+		var collection = Db.collection('user');
 
 	    // Submit to the DB
 	    collection.insert(user, function (err, doc) {
