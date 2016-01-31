@@ -264,7 +264,7 @@ function getUniversityInfo(req, res) {
 						});
 					}
 
-					respond(res, 200, 'getUniversityInfo', 
+					respond(res, 200, 'getUniversityInfo', { 
 						universityId : university.id,
 						array: {
 							json_array
