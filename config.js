@@ -27,7 +27,4 @@ module.exports = {
 	mongo: {
 		port: 27017
 	}
-	ticket: {
-		length: 64
-	}
 };
