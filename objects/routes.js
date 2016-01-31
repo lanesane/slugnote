@@ -77,8 +77,6 @@ function createToken(req, res, callback) {
 function createUser(req, res) {
 	console.log("yo");
 	User.find({ email: req.body.userEmail },function (ex, users) {
-		if (ex) throw ex;
-
 		if (!users.length){
 			var user = new User({
 				email: req.body.userEmail,
