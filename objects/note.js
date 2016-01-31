@@ -8,7 +8,7 @@ var mongoose = require('mongoose');
 var async = require('async');
 
 // Structure of the Note class
-var noteSchema = new mongoose.Schema({
+var noteSchema = mongoose.Schema({
 	user: { type: String, default: "" },
 	format: { type: String, required: true },
 	data: [],

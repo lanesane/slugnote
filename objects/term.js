@@ -8,7 +8,7 @@ var mongoose = require('mongoose');
 var async = require('async');
 
 // Structure of the Term class
-var termSchema = new mongoose.Schema({
+var termSchema = mongoose.Schema({
 	name: { type: String, default: "" },
 	courses: { type: Array },
 	universities: { type: Array },
