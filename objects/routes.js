@@ -88,12 +88,12 @@ function createUser(req, res) {
                 if (ex) throw ex;
 
                 respond(res, 200, 'createUser', {
-                    userId: per_user._id,
+                    userId: per_user.id,
                     authToken: token
                 });
-            });
+            })
         });
-    });
+    })
 }
 
 // Gets a user's information
