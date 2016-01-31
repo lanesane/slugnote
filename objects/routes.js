@@ -65,7 +65,7 @@ function createToken(req, res, user, callback) {
                 });
             }
             else {
-                console.log("What the fuck? There was a collision in a token");
+                console.log("What the hell? There was a collision in a token");
                 createToken(req, res, user, callback);
             }
         });
@@ -86,8 +86,8 @@ function createUser(req, res) {
                 if (ex) throw ex;
 
                 respond(res, 200, 'createUser', {
-                    userId: user.id,
-                    authToken: token
+                    userId : user.id,
+                    authToken : token
                 });
             })
         });
