@@ -82,6 +82,8 @@ function createUser(req, res) {
         if (ex) throw ex;
 
         user.save().then(function(user) {
+            console.log("what");
+
             createToken(req, res, user, function(ex, token) {
                 if (ex) throw ex;
 
