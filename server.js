@@ -1,5 +1,5 @@
 var express = require('express');
-var mongoose = require('mongoose');
+var mongoose = require('mongodb').MongoClient;
 var http = require('http');
 var bodyParser = require('body-parser');
 var logger = require('morgan');
