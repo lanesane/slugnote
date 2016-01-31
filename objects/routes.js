@@ -46,7 +46,7 @@ function createToken(req, res, user, callback) {
 			if (ex) throw ex;
 			
 			if (!notUnique) {
-				client.set('auth:token:' + token, user.id, function(ex) {
+				client.set('auth:token:' + token, function(ex) {
 					if (ex) throw ex;
 					client.expire('auth:token:' + token, config.auth.tokenTTL);
 				}); //Might not work
