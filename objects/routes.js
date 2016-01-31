@@ -24,7 +24,16 @@ function checkRequest(req, res, next) {
 // Pass before authenticating
 function authenticate(req, res, method, callback) {
 	// Check for the token and pass exeption and user to callback
-	callback(null, "sick life.");
+	client.get('auth:token:' + req.body.authToken, function(ex, userId) {
+		if (ex) throw ex;
+
+		if (userId) {
+			callback(null, userId);
+		}
+		else {
+			callback(null, "");
+		}
+	});
 }
 
 // Tries to convert a string to an object id. If it works, returns ObjectId. Otherwise, error
@@ -189,6 +198,9 @@ function getNote(req, res) {
 
 // Creates a university
 function createUniversity(req, res) {
+	authenticate(req, res, 'createUniversity', function(ex, authUserId) {
+		if (ex) throw ex;
+
 		var university = new University({
 			name: req.body.universityName
 		});
@@ -200,6 +212,7 @@ function createUniversity(req, res) {
 				universityId: university.id
 			});
 		});
+	});
 }
 
 // Gets a university's information, mainly used for a list of courses from a university
@@ -263,6 +276,7 @@ function getTokenTTL(req, res) {
 
 module.exports = {
 	checkRequest: checkRequest,
+	createToken: createToken,
 	createNote: createNote,
 	getNoteInfo: getNoteInfo,
 	getNote: getNote,
