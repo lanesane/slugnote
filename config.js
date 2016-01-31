@@ -10,6 +10,7 @@ module.exports = {
 	},
 	db: {
 		host: "127.0.0.1",
+		port: 8080,
 		name: "test"
 	},
 	log: {
