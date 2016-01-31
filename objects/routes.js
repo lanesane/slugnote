@@ -86,10 +86,10 @@ function createUser(req, res) {
 
 		console.log("1: " + user);
 
-		user.save(function(ex) {
-			console.log("2: " + user);
-			if (ex) throw ex;
+		user.save(function(ex, user) {
+			if (ex) return console.error(ex);
 
+			console.log("2: " + user);
 			createToken(req, res, user, function(ex, user, token) {
 				if (ex) throw ex;
 
