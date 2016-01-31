@@ -7,7 +7,7 @@ var bcrypt = require('bcrypt');
 var mongoose = require('mongodb');
 
 // The structure of the user class
-var userSchema = new mongoose.Schema({
+var userSchema = mongoose.Schema({
 	name: { type: String, required: true },
 	email: { type: String, required: true },
 	password: { 
