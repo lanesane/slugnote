@@ -75,16 +75,12 @@ function createToken(req, res, user, callback) {
 
 // Creates a user
 function createUser(req, res) {
-	console.log("yo");
 	var user = new User({
 		email: req.body.userEmail,
 		name: req.body.userName
 	});
-	console.log(user);
 	user.setPassword(req.body.userPassword, function(ex) {
 		if (ex) throw ex;
-
-		console.log("1: " + user);
 
 		user.save(function(ex) {
 			if (ex) return console.error(ex);
@@ -102,7 +98,6 @@ function createUser(req, res) {
 		user.save(function(ex) {
 			if (ex) return console.error(ex);
 
-			console.log("2: " + user);
 			createToken(req, res, user, function(ex, user, token) {
 				if (ex) throw ex;
 
@@ -113,7 +108,6 @@ function createUser(req, res) {
 			});
 		});
 	});
-	console.log("what");
 }
 
 // Gets a user's information
