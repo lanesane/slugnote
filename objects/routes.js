@@ -85,18 +85,17 @@ function createUser(req, res) {
 		if (ex) throw ex;
 
 		console.log("1: " + user);
+	})
+	user.save(function(ex, user) {
+		if (ex) return console.error(ex);
 
-		user.save(function(ex, user) {
-			if (ex) return console.error(ex);
+		console.log("2: " + user);
+		createToken(req, res, user, function(ex, user, token) {
+			if (ex) throw ex;
 
-			console.log("2: " + user);
-			createToken(req, res, user, function(ex, user, token) {
-				if (ex) throw ex;
-
-				respond(res, 200, 'createUser', {
-					userId: user.id,
-					authToken: token
-				})
+			respond(res, 200, 'createUser', {
+				userId: user.id,
+				authToken: token
 			})
 		})
 	})
