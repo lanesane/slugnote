@@ -7,12 +7,14 @@
 	},
 	"dependencies": {
 		"async": "*",
+		"socket.io": "latest",
 		"express": "*",
 		"mongoose": "*",
 		"body-parser": "*",
 		"errorhandler": "*",
 		"morgan": "*",
 		"hiredis": "*",
-		"redis": "*"
+		"redis": "*",
+		"jade": "*"
 	}
 }
