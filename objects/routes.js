@@ -74,21 +74,21 @@ function createToken(req, res, user, callback) {
 
 // Creates a user
 function createUser(req, res) {
-    var user = new User({
-        email: req.body.userEmail,
-        name: req.body.userName
+    var per_user = new User({
+        email : req.body.userEmail,
+        name : req.body.userName
     });
-    user.setPassword(req.body.userPassword, function(ex) {
+    per_user.setPassword(req.body.userPassword, function(ex) {
         if (ex) throw ex;
 
-        user.save().then(function(user) {
+        per_user.save().then(function(per_user) {
             console.log("what");
 
-            createToken(req, res, user, function(ex, token) {
+            createToken(req, res, per_user, function(ex, token) {
                 if (ex) throw ex;
 
                 respond(res, 200, 'createUser', {
-                    userId: user.id,
+                    userId: per_user._id,
                     authToken: token
                 });
             });
