@@ -51,7 +51,7 @@ userSchema.methods.setPassword = function(password, callback) {
 					needsReset: false
 				};
 				
-				callback(null);
+				callback(null, user.password);
 			});
 		}
 	);
