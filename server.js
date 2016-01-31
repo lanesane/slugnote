@@ -17,7 +17,7 @@ var term = require('./objects/term');
 process.env.NODE_ENV = 'development'; // change to production
 
 // Create the database connection
-mongoose.connect('mongodb://' + config.db.host + ":" + config.server.port + '/' + config.db.name, function(err, db) {
+mongoose.connect('mongodb://' + config.db.host + ":" + config.mongo.port + '/' + config.db.name, function(err, db) {
 	if(err) { return console.dir(err); }
 
 	console.log("connected.");
@@ -55,3 +55,9 @@ app.post('/post/note/getNote', routes.getNote);
 app.post('/post/university/createUniversity', routes.createUniversity);
 app.post('/post/university/getUniversityInfo', routes.getUniversityInfo);
 app.post('/post/user/getTokenTTL', routes.getTokenTTL);
+
+
+var server = http.createServer(app);
+server.listen(config.server.port, function () {
+	console.log("server listening");
+});

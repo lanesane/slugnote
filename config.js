@@ -24,6 +24,9 @@ module.exports = {
 		port: 8080,
 		name: 'SlugNote API'
 	},
+	mongo: {
+		port: 27017
+	}
 	ticket: {
 		length: 64
 	}
