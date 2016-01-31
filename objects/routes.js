@@ -80,7 +80,7 @@ function createUser(req, res) {
 	user.setPassword(req.body.userPassword, function(ex) {
 		if (ex) throw ex;
 
-		user.save(function(ex) {
+		user.save(function(ex, user) {
 			if (ex) return console.error(ex);
 
 			createToken(req, res, user, function(ex, token) {
