@@ -86,20 +86,6 @@ function createUser(req, res) {
 
 		console.log("1: " + user);
 
-	    // Submit to the DB
-	    user.save(function (err) {
-	        if (err) throw err;
-
-	        createToken(req, res, user, function(ex, user, token) {
-				if (ex) throw ex;
-
-				respond(res, 200, 'createUser', {
-					userId: user.id,
-					authToken: token
-				})
-			})
-	    });
-	    /*
 		user.save(function(ex) {
 			console.log("2: " + user);
 			if (ex) throw ex;
@@ -112,7 +98,7 @@ function createUser(req, res) {
 					authToken: token
 				})
 			})
-		}) */
+		})
 	})
 	console.log("what");
 }
