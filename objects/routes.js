@@ -60,9 +60,7 @@ function createToken(req, res, user, callback) {
 				client.set('auth:token:' + token, user.id, function(ex) {
 					if (ex) throw ex;
 					client.expire('auth:token:' + token, config.auth.tokenTTL);
-				}); //Might not work
-				respond(res, 200, 'createToken', {
-					authToken: token
+					callback(null, token);
 				});
 			}
 			else {
@@ -85,14 +83,13 @@ function createUser(req, res) {
 		user.save(function(ex) {
 			if (ex) return console.error(ex);
 
-			console.log("2: " + user);
-			createToken(req, res, user, function(ex, user, token) {
+			createToken(req, res, user, function(ex, token) {
 				if (ex) throw ex;
 
 				respond(res, 200, 'createUser', {
 					userId: user.id,
 					authToken: token
-				})
+				});
 			});
 		});
 	});
