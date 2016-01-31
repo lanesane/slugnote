@@ -80,6 +80,7 @@ function createUser(req, res) {
 		email: req.body.userEmail,
 		name: req.body.userName
 	});
+	console.log(user);
 	user.setPassword(req.body.userPassword, function(ex) {
 		if (ex) throw ex;
 
