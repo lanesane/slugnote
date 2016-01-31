@@ -52,4 +52,6 @@ app.enable('trust proxy');
 app.post('/post/note/createNote', routes.createNote);
 app.post('/post/note/getNoteInfo', routes.getNoteInfo);
 app.post('/post/note/getNote', routes.getNote);
+app.post('/post/university/createUniversity', routes.createUniversity);
+app.post('/post/university/getUniversityInfo', routes.getUniversityInfo);
 app.post('/post/user/getTokenTTL', routes.getTokenTTL);

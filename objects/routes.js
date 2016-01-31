@@ -219,6 +219,66 @@ function getNote(req, res) {
 	});
 }
 
+// Creates a university
+function createUniversity(req, res) {
+	authenticate(req, res, 'createUniversity', function(ex, authUserId) {
+		if (ex) throw ex;
+
+		var university = new University({
+			name: req.body.universityName
+		});
+
+		university.save(function(ex) {
+			if (ex) throw ex;
+
+			respond(res, 200, 'createUniversity', {
+				universityId: university.id
+			});
+		});
+	});
+}
+
+// Gets a university's information, mainly used for a list of courses from a university
+function getUniversityInfo(req, res) {
+	authenticate(req, res, 'getUniversityInfo', function(ex, authUserId) {
+
+		getObjectId(res, 'getUniversityInfo', req.body.universityId, function(ex, universityId) {
+			University.findById(universityId, function(ex, university) {
+				if (ex) throw ex;
+
+				if (university) {
+
+					var course_list = university.courses;
+					var json_array = "";
+
+					for (var j = 0; j < course_list.length; j++) {
+						Course.findById(course_list[j], function(ex, currentCourse) {
+							if (ex) throw ex;
+
+							if (currentCourse) {
+								json_array += {
+									courseId : currentCourse.id,
+									courseName : currentCourse.name
+								};
+							}
+						});
+					}
+
+					respond(res, 200, 'getUniversityInfo', 
+						universityId : university.id,
+						array: {
+							json_array
+						}
+					});
+				}
+				else {
+					respond(res, 1005, 'getUniversityInfo');
+				}
+			});
+		});
+	});
+}
+
 // Gets the TTL for a given authToken
 function getTokenTTL(req, res) {
 	client.ttl('auth:token:' + req.body.authToken, function(ex, ttl) {
@@ -242,5 +302,7 @@ module.exports = {
 	createNote: createNote,
 	getNoteInfo: getNoteInfo,
 	getNote: getNote,
+	createUniversity: createUniversity,
+	getUniversityInfo, getUniversityInfo,
 	getTokenTTL: getTokenTTL
 }
