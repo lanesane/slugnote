@@ -19,7 +19,6 @@ process.env.NODE_ENV = 'development'; // change to production
 // Create the database connection
 mongoose.connect('mongodb://' + config.db.host + '/' + config.db.name);
 var db = mongoose.connection;
-db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function callback () {
 	console.log("Server: " + config.db.host + "/" + config.server.port + " with db " + config.db.name);
 });
