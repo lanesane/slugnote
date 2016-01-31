@@ -49,6 +49,7 @@ if(app.get('env') == 'development') {
 app.enable('trust proxy');
 
 // API Command time :D
+app.post('/post/user/createToken', routes.createToken);
 app.post('/post/note/createNote', routes.createNote);
 app.post('/post/note/getNoteInfo', routes.getNoteInfo);
 app.post('/post/note/getNote', routes.getNote);

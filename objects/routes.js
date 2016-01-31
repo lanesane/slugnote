@@ -6,6 +6,7 @@ var Course = require('./course');
 var Teacher = require('./teacher');
 var Term = require('./term');
 var ObjectId = require('mongoose').Types.ObjectId;
+var crypto = require('crypto');
 
 var async = require('async');
 var redis = require('redis');
@@ -27,25 +28,12 @@ function authenticate(req, res, method, callback) {
 		if (ex) throw ex;
 
 		if (userId) {
-			console.log("what");
-			callback(null, userId);    
-		}
-		else {
-			console.log("who");
-			//respond(res, 1001, method);
 			callback(null, userId);
 		}
+		else {
+			respond(res, 1001, method);
+		}
 	});
-}
-
-// Tries to convert a string to an object id. If it works, returns ObjectId. Otherwise, error
-function getObjectId(res, method, string, callback){
-	if (string.match(/^[0-9a-fA-F]{24}$/)) {
-		callback(null, new ObjectId(string))
-	}
-	else {
-		respond(res, 1004, method);
-	}
 }
 
 // Creates an authentication token and puts it in the database
@@ -62,7 +50,42 @@ function createToken(req, res, user, callback) {
 					if (ex) throw ex;
 					client.expire('auth:token:' + token, config.auth.tokenTTL);
 				}); //Might not work
-				callback(null, user, token)
+				callback(null, user, token);
+			}
+			else {
+				createToken(req, res, user, callback);
+			}
+		});
+	});
+}
+
+// Tries to convert a string to an object id. If it works, returns ObjectId. Otherwise, error
+function getObjectId(res, method, string, callback){
+	if (string.match(/^[0-9a-fA-F]{24}$/)) {
+		callback(null, new ObjectId(string))
+	}
+	else {
+		respond(res, 1004, method);
+	}
+}
+
+// Creates an authentication token and puts it in the database
+function createToken(req, res, callback) {
+	crypto.randomBytes(64, function(ex, bytes) {
+		if (ex) throw ex;
+		
+		token = bytes.toString('base64');
+		client.exists('auth:token:' + token, function(ex, notUnique) {
+			if (ex) throw ex;
+			
+			if (!notUnique) {
+				client.set('auth:token:' + token, user.id, function(ex) {
+					if (ex) throw ex;
+					client.expire('auth:token:' + token, config.auth.tokenTTL);
+				}); //Might not work
+				respond(res, 200, 'createToken', {
+					authToken: token
+				});
 			}
 			else {
 				console.log("What the fuck? There was a collision in a token");
@@ -302,6 +325,7 @@ function getTokenTTL(req, res) {
 
 module.exports = {
 	checkRequest: checkRequest,
+	createToken: createToken,
 	createNote: createNote,
 	getNoteInfo: getNoteInfo,
 	getNote: getNote,
