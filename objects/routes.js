@@ -81,7 +81,7 @@ function createUser(req, res) {
     per_user.setPassword(req.body.userPassword, function(ex) {
         if (ex) throw ex;
 
-        per_user.save(function(per_user) {
+        per_user.save(function(ex) {
             console.log("what");
 
             createToken(req, res, per_user, function(ex, token) {
