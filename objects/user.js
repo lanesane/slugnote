@@ -4,7 +4,7 @@
 
 var config = require('../config');
 var bcrypt = require('bcrypt');
-var mongoose = require('mongoose');
+var mongoose = require('mongodb');
 
 // The structure of the user class
 var userSchema = new mongoose.Schema({

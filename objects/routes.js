@@ -32,8 +32,8 @@ function authenticate(req, res, method, callback) {
             callback(null, userId);
         }
         else {
-            //respond(res, 1001, method);
-            callback(null, method);
+            respond(res, 1001, method);
+            //callback(null, method);
         }
     });
 }
@@ -271,7 +271,7 @@ function getNote(req, res) {
 // Creates a university
 function createUniversity(req, res) {
     authenticate(req, res, 'createUniversity', function(ex, authUserId) {
-        //if (ex) throw ex;
+        if (ex) throw ex;
 
         var university = new University({
             name: req.body.universityName
