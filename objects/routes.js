@@ -96,14 +96,14 @@ function createUser(req, res) {
 							userId: user.id,
 							authToken: token
 						});
-					})
+					});
 				});
-			})
+			});
 		}
 		else {
 			respond(res, 1002, 'createUserEmail');
 		}
-	})
+	});
 }
 
 // Gets a user's information
