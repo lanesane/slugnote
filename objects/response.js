@@ -15,7 +15,7 @@ function respond(res, status, apiCall, data) {
 	res.send({
 		status: status,
 		call: apiCall,
-		data: data,
+		data: data
 	});
 }
 
