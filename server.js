@@ -32,7 +32,7 @@ var app = express();
 // uses JSON
 app.use(bodyParser.json({ strict: true }));
 // for logging
-//app.use(routes.checkRequest);
+app.use(routes.checkRequest);
 // error handling
 app.use(function(ex, req, res, next) {
 	if (ex) {
