@@ -33,7 +33,7 @@ function authenticate(req, res, method, callback) {
 		else {
 			console.log("who");
 			//respond(res, 1001, method);
-			callback(null, null);
+			callback(null, userId);
 		}
 	});
 }
