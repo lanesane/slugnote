@@ -24,39 +24,7 @@ function checkRequest(req, res, next) {
 // Pass before authenticating
 function authenticate(req, res, method, callback) {
 	// Check for the token and pass exeption and user to callback
-	client.get('auth:token:' + req.body.authToken, function(ex, userId) {
-		if (ex) throw ex;
-
-		if (userId) {
-			callback(null, userId);
-		}
-		else {
-			respond(res, 1001, method);
-		}
-	});
-}
-
-// Creates an authentication token and puts it in the database
-function createToken(req, res, user, callback) {
-	crypto.randomBytes(64, function(ex, bytes) {
-		if (ex) throw ex;
-		
-		token = bytes.toString('base64');
-		client.exists('auth:token:' + token, function(ex, notUnique) {
-			if (ex) throw ex;
-			
-			if (!notUnique) {
-				client.set('auth:token:' + token, function(ex) {
-					if (ex) throw ex;
-					client.expire('auth:token:' + token, config.auth.tokenTTL);
-				}); //Might not work
-				callback(null, user, token);
-			}
-			else {
-				createToken(req, res, user, callback);
-			}
-		});
-	});
+	callback(null, "sick life.");
 }
 
 // Tries to convert a string to an object id. If it works, returns ObjectId. Otherwise, error
@@ -67,32 +35,6 @@ function getObjectId(res, method, string, callback){
 	else {
 		respond(res, 1004, method);
 	}
-}
-
-// Creates an authentication token and puts it in the database
-function createToken(req, res, callback) {
-	crypto.randomBytes(64, function(ex, bytes) {
-		if (ex) throw ex;
-		
-		token = bytes.toString('base64');
-		client.exists('auth:token:' + token, function(ex, notUnique) {
-			if (ex) throw ex;
-			
-			if (!notUnique) {
-				client.set('auth:token:' + token, function(ex) {
-					if (ex) throw ex;
-					client.expire('auth:token:' + token, config.auth.tokenTTL);
-				}); //Might not work
-				respond(res, 200, 'createToken', {
-					authToken: token
-				});
-			}
-			else {
-				console.log("What the fuck? There was a collision in a token");
-				createToken(req, res, user, callback);
-			}
-		});
-	});
 }
 
 // Creates a note
