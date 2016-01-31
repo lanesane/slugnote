@@ -13,9 +13,9 @@ function respond(res, status, apiCall, data) {
 	status = this.status || 200;
 
 	res.send({
-		status: this.status,
+		status: status,
 		call: apiCall,
-		data: this.data
+		data: data
 	});
 }
 
