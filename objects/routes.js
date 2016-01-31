@@ -271,7 +271,7 @@ function getNote(req, res) {
 // Creates a university
 function createUniversity(req, res) {
     authenticate(req, res, 'createUniversity', function(ex, authUserId) {
-        if (ex) throw ex;
+        //if (ex) throw ex;
 
         var university = new University({
             name: req.body.universityName
