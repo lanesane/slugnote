@@ -1,12 +1,11 @@
 var express = require('express');
-var mongoose = require('mongodb').MongoClient;
+var mongoose = require('mongoose');
 var http = require('http');
 var bodyParser = require('body-parser');
 var logger = require('morgan');
 var errorHandler = require('errorhandler');
 var config = require('./config');
 var fs = require('fs');
-var bcrypt = require('bcrypt');
 
 var routes = require('./objects/routes');
 var note = require('./objects/note');
