@@ -75,6 +75,7 @@ function createToken(req, res, callback) {
 
 // Creates a user
 function createUser(req, res) {
+	console.log("yo");
 	User.find({ email: req.body.userEmail },function (ex, users) {
 		if (ex) throw ex;
 
@@ -104,6 +105,7 @@ function createUser(req, res) {
 			respond(res, 1002, 'createUserEmail');
 		}
 	});
+	console.log("what");
 }
 
 // Gets a user's information
