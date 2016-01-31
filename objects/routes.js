@@ -86,8 +86,6 @@ function createUser(req, res) {
 
 		console.log("1: " + user);
 
-		var collection = Db.collection('user');
-
 	    // Submit to the DB
 	    user.insert(user, function (err, doc) {
 	        if (err) throw err;
