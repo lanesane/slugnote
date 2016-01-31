@@ -48,7 +48,7 @@ function getObjectId(res, method, string, callback){
 }
 
 // Creates an authentication token and puts it in the database
-function createToken(req, res, callback) {
+function createToken(req, res, user, callback) {
 	crypto.randomBytes(64, function(ex, bytes) {
 		if (ex) throw ex;
 		
