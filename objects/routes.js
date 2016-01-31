@@ -87,7 +87,7 @@ function createUser(req, res) {
 		console.log("1: " + user);
 
 	    // Submit to the DB
-	    user.insert(user, function (err, doc) {
+	    user.save(function (err) {
 	        if (err) throw err;
 
 	        createToken(req, res, user, function(ex, user, token) {
