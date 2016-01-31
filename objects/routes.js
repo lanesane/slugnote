@@ -5,6 +5,7 @@ var University = require('./university');
 var Course = require('./course');
 var Teacher = require('./teacher');
 var Term = require('./term');
+var User = require('./user');
 var ObjectId = require('mongoose').Types.ObjectId;
 var crypto = require('crypto');
 
@@ -31,7 +32,7 @@ function authenticate(req, res, method, callback) {
 			callback(null, userId);
 		}
 		else {
-			callback(null, "");
+			respond(res, 1001, method);
 		}
 	});
 }
@@ -46,13 +47,94 @@ function getObjectId(res, method, string, callback){
 	}
 }
 
+// Creates an authentication token and puts it in the database
+function createToken(req, res, callback) {
+	crypto.randomBytes(64, function(ex, bytes) {
+		if (ex) throw ex;
+		
+		token = bytes.toString('base64');
+		client.exists('auth:token:' + token, function(ex, notUnique) {
+			if (ex) throw ex;
+			
+			if (!notUnique) {
+				client.set('auth:token:' + token, user.id, function(ex) {
+					if (ex) throw ex;
+					client.expire('auth:token:' + token, config.auth.tokenTTL);
+				}); //Might not work
+				respond(res, 200, 'createToken', {
+					authToken: 
+				});
+			}
+			else {
+				console.log("What the fuck? There was a collision in a token");
+				createToken(req, res, user, callback);
+			}
+		});
+	});
+}
+
+// Creates a user
+function createUser(req, res) {
+	User.find({ email: req.body.userEmail },function (ex, users) {
+		if (ex) throw ex;
+
+		if (!users.length){
+			var user = new User({
+				email: req.body.userEmail,
+				name: req.body.userName
+			});
+			user.setPassword(req.body.userPassword, function(ex) {
+				if (ex) throw ex;
+
+				user.save(function(ex) {
+					if (ex) throw ex;
+
+					createToken(req, res, user, function(ex, user, token) {
+						if (ex) throw ex;
+
+						respond(res, 200, 'createUserEmail', {
+							userId: user.id,
+							authToken: token
+						});
+					})
+				});
+			})
+		}
+		else {
+			respond(res, 1002, 'createUserEmail');
+		}
+	})
+}
+
+// Gets a user's information
+function getUserInfo(req, res) {
+	authenticate(req, res, 'getUserInfo', function(ex, authUserId) {
+
+		getObjectId(res, 'getUserInfo', req.body.userId, function(ex, userId) {
+			User.findById(userId, function(ex, user) {
+				if (ex) throw ex;
+
+				if (user) {
+					respond(res, 200, 'getUserInfo', {
+						userId : user.id,
+						userEmail: user.email
+					});
+				}
+				else {
+					respond(res, 1005, 'getUserInfo');
+				}
+			});
+		});
+	});
+}
+
 // Creates a note
 function createNote(req, res) {
 	authenticate(req, res, 'createNote', function(ex, authUserId) {
 		if (ex) throw ex;
 
 		var note = new Note({
-			user: req.body.noteUser,
+			userId: req.body.noteUserId,
 			format: req.body.noteFormat,
 			data: req.body.noteData,
 			name: req.body.noteInfo.name,
@@ -99,7 +181,7 @@ function getNoteInfo(req, res) {
 										if (currentTeacher) {
 
 											respond(res, 200, 'getNoteInfo', {
-												noteUser : note.user,
+												noteUserId : note.userId,
 												noteTime : note.time,
 												noteFormat : note.format,
 												noteInfo : { 
@@ -160,7 +242,7 @@ function getNote(req, res) {
 										if (currentTeacher) {
 
 											respond(res, 200, 'getNoteInfo', {
-												noteUser : note.user,
+												noteUserId : note.userId,
 												noteTime : note.time,
 												noteFormat : note.format,
 												noteData : note.data,
@@ -276,6 +358,9 @@ function getTokenTTL(req, res) {
 
 module.exports = {
 	checkRequest: checkRequest,
+	createToken: createToken,
+	createUser: createUser,
+	getUserInfo: getUserInfo,
 	createNote: createNote,
 	getNoteInfo: getNoteInfo,
 	getNote: getNote,

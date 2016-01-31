@@ -13,6 +13,7 @@ var university = require('./objects/university');
 var course = require('./objects/course');
 var teacher = require('./objects/teacher');
 var term = require('./objects/term');
+var user = require('./objects/user');
 
 process.env.NODE_ENV = 'development'; // change to production
 
@@ -55,6 +56,8 @@ app.post('/post/note/getNote', routes.getNote);
 app.post('/post/university/createUniversity', routes.createUniversity);
 app.post('/post/university/getUniversityInfo', routes.getUniversityInfo);
 app.post('/post/user/getTokenTTL', routes.getTokenTTL);
+app.post('/post/user/createUser', routes.createUser);
+app.post('/post/user/getUserProfile', routes.getUserProfile);
 
 
 var server = http.createServer(app);
