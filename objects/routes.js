@@ -326,6 +326,50 @@ function getUniversityList(req, res) {
     });
 }
 
+// Gets a course's array of notes
+function getCourseList(req, res) {
+    authenticate(req, res, 'getCourseInfo', function(ex, authUserId) {
+
+        getObjectId(res, 'getCourseInfo', req.body.courseId, function(ex, courseId) {
+            Course.findById(courseId, function(ex, course) {
+                if (ex) throw ex;
+
+                if (course) {
+
+                    var notes_list = course.notes;
+                    var json_array = "";
+
+                    for (var j = 0; j < notes_list.length; j++) {
+                        Note.findById(notes_list[j], function(ex, currentNote) {
+                            if (ex) throw ex;
+
+                            if (currentNote) {
+                                json_array += {
+                                    noteUserId : currentNote.userId,
+                                    noteTime : currentNote.time,
+                                    noteFormat : currentNote.format,
+                                    noteInfo : { 
+                                        name : currentNote.name,
+                                        description : currentNote.description
+                                    }
+                                };
+                            }
+                        });
+                    }
+
+                    respond(res, 200, 'getCourseList', { 
+                        courseId : course.id,
+                        array : json_array
+                    });
+                }
+                else {
+                    respond(res, 1005, 'getCourseList');
+                }
+            });
+        });
+    });
+}
+
 // Gets the TTL for a given authToken
 function getTokenTTL(req, res) {
     client.ttl('auth:token:' + req.body.authToken, function(ex, ttl) {
@@ -354,5 +398,6 @@ module.exports = {
     getNote: getNote,
     createUniversity: createUniversity,
     getUniversityList: getUniversityList,
+    getCourseList: getCourseList,
     getTokenTTL: getTokenTTL
 }
