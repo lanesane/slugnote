@@ -32,7 +32,8 @@ function authenticate(req, res, method, callback) {
             callback(null, userId);
         }
         else {
-            respond(res, 1001, method);
+            //respond(res, 1001, method);
+            callback(null, method);
         }
     });
 }
