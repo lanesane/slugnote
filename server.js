@@ -48,11 +48,6 @@ if(app.get('env') == 'development') {
 
 app.enable('trust proxy');
 
-io.sockets.on('connection', function (socket) {
-    console.log('A new user connected!');
-    socket.emit('info', { msg: 'The world is round, there is no up or down.' });
-});
-
 // API Command time :D
 app.post('/post/note/createNote', routes.createNote);
 app.post('/post/note/getNoteInfo', routes.getNoteInfo);
