@@ -355,6 +355,6 @@ module.exports = {
     getNoteInfo: getNoteInfo,
     getNote: getNote,
     createUniversity: createUniversity,
-    getUniversityInfo, getUniversityInfo,
+    getUniversityInfo: getUniversityInfo,
     getTokenTTL: getTokenTTL
 }
