@@ -21,16 +21,17 @@ var userSchema = new mongoose.Schema({
 });
 
 // Creates a virtual id field on the object that can be used in place of _id
-userSchema.virtual('id').get(function() {
+/*userSchema.virtual('id').get(function() {
 	return this._id;
-});
+});*/
 
+/*
 // On save, changed modifiedAt 
 userSchema.pre('save', function(next) {
 	
 	this.modifiedAt = new Date;
 	next();
-});
+});*/
 
 // Sets the password hash, then calls callback
 userSchema.methods.setPassword = function(password, callback) {
