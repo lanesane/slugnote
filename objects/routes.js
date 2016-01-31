@@ -62,7 +62,7 @@ function createToken(req, res, callback) {
 					client.expire('auth:token:' + token, config.auth.tokenTTL);
 				}); //Might not work
 				respond(res, 200, 'createToken', {
-					authToken: 
+					authToken: token
 				});
 			}
 			else {
