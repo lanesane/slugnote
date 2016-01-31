@@ -26,11 +26,11 @@ userSchema.virtual('id').get(function() {
 });
 
 // On save, changed modifiedAt 
-userSchema.pre('save', function(next) {
+/*8 serSchema.pre('save', function(next) {
 	
 	this.modifiedAt = new Date;
 	next();
-});
+});*/
 
 // Sets the password hash, then calls callback
 userSchema.methods.setPassword = function(password, callback) {
