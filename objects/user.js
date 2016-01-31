@@ -30,7 +30,6 @@ var userSchema = mongoose.Schema({
 userSchema.pre('save', function(next) {
 	console.log("we in.");
 	this.modifiedAt = Date.now;
-	next();
 });
 
 // Sets the password hash, then calls callback
