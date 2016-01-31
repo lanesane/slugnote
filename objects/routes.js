@@ -27,9 +27,11 @@ function authenticate(req, res, method, callback) {
 		if (ex) throw ex;
 
 		if (userId) {
+			console.log("what");
 			callback(null, userId);    
 		}
 		else {
+			console.log("who");
 			//respond(res, 1001, method);
 			callback(null, null);
 		}
