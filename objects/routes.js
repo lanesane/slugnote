@@ -95,10 +95,10 @@ function createUser(req, res) {
 				respond(res, 200, 'createUser', {
 					userId: user.id,
 					authToken: token
-				});
-			});
-		});
-	});
+				})
+			})
+		})
+	})
 	console.log("what");
 }
 
