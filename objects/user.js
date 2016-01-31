@@ -4,7 +4,7 @@
 
 var config = require('../config');
 var bcrypt = require('bcrypt');
-var mongoose = require('mongodb');
+var mongoose = require('mongoose');
 
 // The structure of the user class
 var userSchema = mongoose.Schema({
@@ -27,7 +27,7 @@ userSchema.virtual('id').get(function() {
 
 
 // On save, changed modifiedAt 
-userSchema.pre('save', function(next) {
+userSchema.pre('save', function() {
 	this.modifiedAt = new Date;
 });
 
