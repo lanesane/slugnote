@@ -29,7 +29,7 @@ var userSchema = mongoose.Schema({
 // On save, changed modifiedAt 
 userSchema.pre('save', function(next) {
 	console.log("we in.");
-	this.modifiedAt = new Date;
+	this.modifiedAt = Date.now;
 	next();
 });
 
