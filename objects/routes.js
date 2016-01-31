@@ -95,30 +95,6 @@ function createUser(req, res) {
 				})
 			});
 		});
-		user.save(function(ex) {
-			if (ex) return console.error(ex);
-
-			createToken(req, res, user, function(ex, user, token) {
-				if (ex) throw ex;
-
-				respond(res, 200, 'createUser', {
-					userId: user.id,
-					authToken: token
-				})
-			});
-		});
-		user.save(function(ex) {
-			if (ex) return console.error(ex);
-
-			createToken(req, res, user, function(ex, user, token) {
-				if (ex) throw ex;
-
-				respond(res, 200, 'createUser', {
-					userId: user.id,
-					authToken: token
-				})
-			});
-		});
 	});
 }
 
