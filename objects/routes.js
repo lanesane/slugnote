@@ -189,9 +189,6 @@ function getNote(req, res) {
 
 // Creates a university
 function createUniversity(req, res) {
-	authenticate(req, res, 'createUniversity', function(ex, authUserId) {
-		if (ex) throw ex;
-
 		var university = new University({
 			name: req.body.universityName
 		});
@@ -203,7 +200,6 @@ function createUniversity(req, res) {
 				universityId: university.id
 			});
 		});
-	});
 }
 
 // Gets a university's information, mainly used for a list of courses from a university
