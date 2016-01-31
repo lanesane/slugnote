@@ -85,7 +85,7 @@ function createUser(req, res) {
 		if (ex) throw ex;
 
 		console.log("1: " + user);
-		User.save(user, function(ex) {
+		user.save(user, function(ex) {
 			console.log("2: " + user);
 			if (ex) throw ex;
 
