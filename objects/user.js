@@ -40,7 +40,9 @@ userSchema.methods.setPassword = function(password, callback) {
 	bcrypt.genSalt(config.password.saltWorkFactor, 
 		config.password.saltLength, 
 		function(ex, salt) {
-			if (ex) throw ex;
+			if (ex) {
+				callback(ex, 1201);
+			}
 
 			bcrypt.hash(password, salt, function(ex, hash) {
 				if (ex) {

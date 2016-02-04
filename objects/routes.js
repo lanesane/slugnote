@@ -84,19 +84,19 @@ function createUser(req, res) {
     user.setPassword(req.body.userPassword, function(ex) {
         if (ex) {
             respond(res, 1201, 'createUser');
-            return;
         }
+        else {
+            user.save(function(ex) {
+                createToken(req, res, user, function(ex, token) {
+                    if (ex) throw ex;
 
-        user.save(function(ex) {
-            createToken(req, res, user, function(ex, token) {
-                if (ex) throw ex;
-
-                respond(res, 200, 'createUser', {
-                    userId : user.id,
-                    authToken : token
-                });
-            })
-        });
+                    respond(res, 200, 'createUser', {
+                        userId : user.id,
+                        authToken : token
+                    });
+                })
+            });
+        }
     })
 }
 
