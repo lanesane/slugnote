@@ -82,7 +82,10 @@ function createUser(req, res) {
         name : req.body.userName
     });
     user.setPassword(req.body.userPassword, function(ex) {
-        if (ex) throw ex;
+        if (ex) {
+            respond(res, 1201, 'createUser');
+            return;
+        }
 
         user.save(function(ex) {
             createToken(req, res, user, function(ex, token) {
