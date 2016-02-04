@@ -176,7 +176,6 @@ with the body of the request being a valid JSON object (Like examples)
 
 #### Request
     {
-        "authToken" : "Gk1nJqj2X+IppQ7K0710EzUBcZKsq1+l3bXdfIMxP8w1L3b+rG2Uf4SIO+42UTGhF2G8XZNuJUyh/ipx1HTG4w==",
         "userName" : "First Last",
         "userEmail" : "abc@def.com",
         "userPassword" : "password"
