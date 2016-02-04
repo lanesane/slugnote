@@ -76,28 +76,29 @@ function createToken(req, res, user, callback) {
 function createUser(req, res) {
     if(req.body == null) {
         respond(res, 1002, 'createUser');
-    }
-    var user = new User({
-        email : req.body.userEmail,
-        name : req.body.userName
-    });
-    user.setPassword(req.body.userPassword, function(ex) {
-        if (ex) {
-            respond(res, 1201, 'createUser');
-        }
-        else {
-            user.save(function(ex) {
-                createToken(req, res, user, function(ex, token) {
-                    if (ex) throw ex;
+    } else {
+        var user = new User({
+            email : req.body.userEmail,
+            name : req.body.userName
+        });
+        user.setPassword(req.body.userPassword, function(ex) {
+            if (ex) {
+                respond(res, 1201, 'createUser');
+            }
+            else {
+                user.save(function(ex) {
+                    createToken(req, res, user, function(ex, token) {
+                        if (ex) throw ex;
 
-                    respond(res, 200, 'createUser', {
-                        userId : user.id,
-                        authToken : token
-                    });
-                })
-            });
-        }
-    })
+                        respond(res, 200, 'createUser', {
+                            userId : user.id,
+                            authToken : token
+                        });
+                    })
+                });
+            }
+        })
+    }
 }
 
 // Gets a user's information
