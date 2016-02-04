@@ -74,8 +74,7 @@ function createToken(req, res, user, callback) {
 
 // Creates a user
 function createUser(req, res) {
-    console.log(req.body);
-    if(req.body.isEmpty()) {
+    if(req.body == "{}") {
         respond(res, 1002, 'createUser');
     } else {
         var user = new User({
