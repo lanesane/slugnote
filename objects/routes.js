@@ -74,7 +74,7 @@ function createToken(req, res, user, callback) {
 
 // Creates a user
 function createUser(req, res) {
-    if(req.body == "{}") {
+    if(isEmpty(req.body)) {
         respond(res, 1002, 'createUser');
     } else {
         var user = new User({
@@ -393,6 +393,10 @@ function getTokenTTL(req, res) {
             });
         }
     });
+}
+
+function isEmpty(obj) {
+  return !Object.keys(obj).length > 0;
 }
 
 module.exports = {
