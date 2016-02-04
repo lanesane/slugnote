@@ -36,7 +36,7 @@ with the body of the request being a valid JSON object (Like examples)
 
 ### getTokenTTL
 #### URI
-`post/user/gettokenttl`
+`token/getttl`
 
 #### Request
     {
@@ -59,7 +59,7 @@ with the body of the request being a valid JSON object (Like examples)
 
 ### createNote
 #### URI
-`post/note/createnote`
+`note/create`
 
 #### Request
     {
@@ -96,7 +96,7 @@ with the body of the request being a valid JSON object (Like examples)
 
 ### getNoteInfo
 #### URI
-`post/note/getnoteinfo`
+`note/info`
 
 #### Request
     {
@@ -133,7 +133,7 @@ with the body of the request being a valid JSON object (Like examples)
 
 ### getNote
 #### URI
-`post/note/getnote`
+`note/get`
 
 #### Request
     {
@@ -172,7 +172,7 @@ with the body of the request being a valid JSON object (Like examples)
 
 ### createUser
 #### URI
-`post/user/createuser`
+`user/create`
 
 #### Request
     {
@@ -195,7 +195,7 @@ with the body of the request being a valid JSON object (Like examples)
 
 ### getUserInfo
 #### URI
-`post/user/getuserinfo`
+`user/get`
 
 #### Request
     {
@@ -236,7 +236,7 @@ with the body of the request being a valid JSON object (Like examples)
 
 ### createUniversity
 #### URI
-`post/university/createuniversity`
+`university/create`
 
 #### Request
     {
@@ -257,7 +257,7 @@ with the body of the request being a valid JSON object (Like examples)
 
 ### list
 #### URI
-`post/university/list`
+`university/list`
 
 #### Request
     {

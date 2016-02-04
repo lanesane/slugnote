@@ -50,15 +50,15 @@ if(app.get('env') == 'development') {
 app.enable('trust proxy');
 
 // API Command time :D
-app.post('/post/note/createNote', routes.createNote);
-app.post('/post/note/getNoteInfo', routes.getNoteInfo);
-app.post('/post/note/getNote', routes.getNote);
-app.post('/post/university/createUniversity', routes.createUniversity);
-app.post('/post/user/getTokenTTL', routes.getTokenTTL);
-app.post('/post/user/createUser', routes.createUser);
-app.post('/post/user/getUserInfo', routes.getUserInfo);
-app.post('/post/university/list', routes.getUniversityList);
-app.post('/post/course/list', routes.getCourseList);
+app.post('/note/create', routes.createNote);
+app.post('/note/info', routes.getNoteInfo);
+app.post('/note/get', routes.getNote);
+app.post('/university/create', routes.createUniversity);
+app.post('/token/getTTL', routes.getTokenTTL);
+app.post('/user/create', routes.createUser);
+app.post('/user/get', routes.getUserInfo);
+app.post('/university/list', routes.getUniversityList);
+app.post('/course/list', routes.getCourseList);
 
 
 var server = http.createServer(app);
