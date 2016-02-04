@@ -43,7 +43,9 @@ userSchema.methods.setPassword = function(password, callback) {
 			if (ex) throw ex;
 
 			bcrypt.hash(password, salt, function(ex, hash) {
-				if (ex) throw ex;
+				if (ex) {
+					callback(ex, 1201);
+				}
 				
 				user.password = {
 					hash: hash,
