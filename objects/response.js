@@ -12,7 +12,7 @@ var config = require('../config');
 function respond(res, status, apiCall, data) {
 	status = status || 200;
 
-	res.send({
+	res.status(status).send({
 		status: status,
 		call: apiCall,
 		data: data,
