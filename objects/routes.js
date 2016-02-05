@@ -19,6 +19,10 @@ var client = redis.createClient();
 // anything else it will need to do
 function checkRequest(req, res, next) {
     // https://stackoverflow.com/questions/12570923/express-3-0-how-to-use-app-locals-use-and-res-locals-use
+    req.body.replace(/\n/g, "\\n")
+                .replace(/\r/g, "\\r")
+                .replace(/\t/g, "\\t")
+                .replace(/\f/g, "\\f");
     next();
 }
 
