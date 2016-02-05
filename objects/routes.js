@@ -23,6 +23,7 @@ function checkRequest(req, res, next) {
                 //.replace(/\r/g, "\\r")
                 //.replace(/\t/g, "\\t")
                 //.replace(/\f/g, "\\f");
+    console.log(req.body);
     next();
 }
 
