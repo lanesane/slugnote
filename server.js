@@ -33,14 +33,15 @@ app.use(bodyParser.json({ strict: true }));
 // for logging
 app.use(routes.checkRequest);
 // error handling
-app.use(function(ex, req, res, next) {
+app.use(function (ex, req, res, next) {
 	if (ex) {
-		res.status(503).send("Internal Server Error")
+		res.status(503).send("Internal Server Error - Somethin happened. Ooops.")
 		throw ex;
 	} else {
 		next();
 	}
 });
+
 app.use(errorHandler());
 
 if(app.get('env') == 'development') {
