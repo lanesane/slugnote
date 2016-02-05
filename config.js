@@ -21,7 +21,7 @@ module.exports = {
 	},
 	server: {
 		version: '0.0.1',
-		port: 8080,
+		port: 8081,
 		name: 'SlugNote API'
 	},
 	mongo: {
