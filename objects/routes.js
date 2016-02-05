@@ -77,7 +77,6 @@ function createToken(req, res, user, callback) {
 
 // Creates a user
 function createUser(req, res) {
-    console.log(req.getBody());
     var user = new User({
         email : req.body.userEmail,
         name : req.body.userName
