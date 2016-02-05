@@ -6,6 +6,7 @@ var logger = require('morgan');
 var errorHandler = require('errorhandler');
 var config = require('./config');
 var fs = require('fs');
+var respond = require('./response').respond;
 
 var routes = require('./objects/routes');
 var note = require('./objects/note');
@@ -35,7 +36,9 @@ app.use(routes.checkRequest);
 // error handling
 app.use(function (ex, req, res, next) {
 	if (ex) {
-		res.status(503).send("Internal Server Error - Somethin happened. Ooops.")
+		respond(res, 503, 'Internal Server Error', {
+        	"Error" : ex
+        })
 		throw ex;
 	} else {
 		next();
