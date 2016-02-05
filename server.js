@@ -28,7 +28,7 @@ db.on('error', console.error.bind(console, 'connection error:'));
 var app = express();
 
 // uses JSON
-app.use(bodyParser.json({ strict: true }));
+app.use(bodyParser.json({ strict: false }));
 // for logging
 app.use(routes.checkRequest);
 // error handling
