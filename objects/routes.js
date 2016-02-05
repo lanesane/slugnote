@@ -73,7 +73,7 @@ function createToken(req, res, user, callback) {
 
 // Creates a user
 function createUser(req, res) {
-    console.log(JSON.stringify(req.body));
+    //console.log(JSON.stringify(req.body));
     if(isEmpty(req.body)) {
         respond(res, 1002, 'createUser');
         console.log("Empty request denied access.");
