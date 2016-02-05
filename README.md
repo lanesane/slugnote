@@ -22,15 +22,15 @@ Send an HTTP POST method to the server at the URI of the desired command
 with the body of the request being a valid JSON object (Like examples)
 
 ### With `curl`
-    curl -k -H "content-type: application/json" -d "JSON OBJECT" https://169.233.236.39/URI
+    curl -k -H "content-type: application/json" -d "JSON OBJECT" https://slugnote.com:8080/URI
 * -k 
     * Ignore the fact that we have a self-signed certificate (We should probably get a proper cert)
 * -H "content-type: application/json"
     * This cannot change. Basically just sets an HTTP header telling the server this is JSON
 * -d "JSON OBJECT"
     * Sets the body of the HTTP request. JSON OBJECT must be valid JSON and must be the JSON that corresponds with the correct request
-* https://169.233.236.39/URI
-    * The URL to post to. If you're testing, change api.slugnote.com to the ip address of the server. URI should be the URI of the request you're making. For example, `post/createNote/`
+* https://slugnote.com:8080/URI
+    * URI should be the URI of the request you're making. For example, `/user/create`
 
 ## Unauthenticated calls
 
