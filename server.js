@@ -6,7 +6,7 @@ var logger = require('morgan');
 var errorHandler = require('errorhandler');
 var config = require('./config');
 var fs = require('fs');
-var respond = require('./response').respond;
+var respond = require('./objects/response').respond;
 
 var routes = require('./objects/routes');
 var note = require('./objects/note');
