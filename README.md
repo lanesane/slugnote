@@ -212,26 +212,7 @@ with the body of the request being a valid JSON object (Like examples)
             "userName" : "First Last"
         }
     }
-
-
-### createToken
-#### URI
-`post/user/createtoken`
-
-#### Request
-    {
-        
-    }
-
-#### Response
-    {
-        "status" : 200,
-        "call" : "createToken",
-        "data" : {
-            "authToken" : "Gk1nJqj2X+IppQ7K0710EzUBcZKsq1+l3bXdfIMxP8w1L3b+rG2Uf4SIO+42UTGhF2G8XZNuJUyh/ipx1HTG4w=="
-        }
-    }
-
+    
 
 ### createUniversity
 #### URI
