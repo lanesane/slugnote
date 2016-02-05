@@ -41,7 +41,7 @@ app.use(function (ex, req, res, next) {
 	} else {
 		next();
 	}
-});
+})
 
 app.use(errorHandler());
 
@@ -62,8 +62,7 @@ app.post('/user/get', routes.getUserInfo);
 app.post('/university/list', routes.getUniversityList);
 app.post('/course/list', routes.getCourseList);
 
-
-var server = http.createServer(app);
-server.listen(config.server.port, function () {
-	console.log("server listening");
+http.createServer(app).listen(config.server.port, function () {
+		console.log(config.server.name + ' listening on port ' + config.server.port);
 });
+
