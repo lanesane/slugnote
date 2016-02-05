@@ -85,6 +85,7 @@ function createUser(req, res) {
     user.setPassword(req.body.userPassword, function(ex) {
         if (ex) {
             respond(res, 1201, 'createUser');
+            throw(ex)
         }
         else {
             user.save(function(ex) {
