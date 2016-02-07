@@ -2,9 +2,12 @@ SlugNote Server
 ===
 
 # Table of Contents
-[Description](#description)
+### [Description](#description)
+
 [Requirements](#requirements)
+
 [Installation](#installation)
+
 [Running the app](#running-the-app)
 
 # Description
