@@ -23,7 +23,7 @@ SlugNote Server
     * [getUserInfo](#getuserinfo)
     * [createUniversity](#createuniversity)
     * [getUniversityList](#getuniversitylist)
-* [Error Codes](#error-codes)
+* [Return Codes](#return-codes)
 
 
 # Description
