@@ -19,11 +19,6 @@ var client = redis.createClient();
 // anything else it will need to do
 function checkRequest(req, res, next) {
     // https://stackoverflow.com/questions/12570923/express-3-0-how-to-use-app-locals-use-and-res-locals-use
-    //req.body.replace(/\n/g, "\\n")
-                //.replace(/\r/g, "\\r")
-                //.replace(/\t/g, "\\t")
-                //.replace(/\f/g, "\\f");
-    console.log(req.body);
     next();
 }
 
@@ -48,7 +43,7 @@ function getObjectId(res, method, string, callback){
         callback(null, new ObjectId(string))
     }
     else {
-        respond(res, 1004, method);
+        respond(res, 1002, method);
     }
 }
 
@@ -84,7 +79,7 @@ function createUser(req, res) {
     });
     user.setPassword(req.body.userPassword, function(ex) {
         if (ex) {
-            respond(res, 1201, 'createUser');
+            respond(res, 1003, 'createUser');
             throw(ex);
         }
         else {
@@ -117,7 +112,7 @@ function getUserInfo(req, res) {
                     });
                 }
                 else {
-                    respond(res, 1005, 'getUserInfo');
+                    respond(res, 1004, 'getUserInfo');
                 }
             });
         });
@@ -142,7 +137,10 @@ function createNote(req, res) {
         });
 
         note.save(function(ex) {
-            if (ex) throw ex;
+            if (ex) { 
+                respond(res, 1005, 'createNote');
+                throw ex;
+            }
 
             respond(res, 200, 'createNote', {
                 noteId: note.id
@@ -157,17 +155,26 @@ function getNoteInfo(req, res) {
 
         getObjectId(res, 'getNoteInfo', req.body.noteId, function(ex, noteId) {
             Note.findById(noteId, function(ex, note) {
-                if (ex) throw ex;
+                if (ex) { 
+                    respond(res, 1006, 'getNoteInfo');
+                    throw ex;
+                }
 
                 if (note) {
 
                     Course.findById(note.course_id, function(ex, currentCourse) {
-                        if (ex) throw ex;
+                        if (ex) { 
+                            respond(res, 1007, 'getNoteInfo');
+                            throw ex;
+                        }
                         
                         if (currentCourse) {
 
                             Term.findById(note.term_id, function(ex, currentTerm) {
-                                if (ex) throw ex;
+                                if (ex) { 
+                                    respond(res, 1008, 'getNoteInfo');
+                                    throw ex;
+                                }
                                 
                                 if (currentTerm) {
 

@@ -283,6 +283,44 @@ with the body of the request being a valid JSON object (Like examples)
         }
     }
 
-## Error Codes
+## Return Codes
 
-#### To be filled out
+### Summary
+* Successful return codes will be returned as code '200'
+* Unsuccessful return codes will be returned in a range from '1001-1100', as specified below
+
+#### 1001
+    Authentication Error, authToken invalid.
+
+#### 1002
+    Lookup Error, objectId invalid.
+
+#### 1003
+    Password creation failed, password invalid.
+
+#### 1004
+    User lookup failed.
+
+#### 1005
+    Note creation failed, unable to be saved.
+
+#### 1006
+    Note lookup failed, objectId invalid.
+
+#### 1007
+    Course lookup failed, objectId associated with Note returned invalid.
+
+#### 1008
+    Term lookup failed, objectId associated with Note returned invalid.
+
+#### 1009
+    Teacher lookup failed, objectId associated with Note returned invalid.
+
+#### 1010
+    University creation failed, unable to be saved.
+
+#### 1011
+    University lookup failed, objectId invalid.
+
+#### 1012
+    Course list lookup failed.
