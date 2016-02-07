@@ -2,13 +2,21 @@ SlugNote Server
 ===
 
 # Table of Contents
-### [Description](#description)
+### [Description](#description-1)
 
-[Requirements](#requirements)
+### [Requirements](#requirements-1)
 
-[Installation](#installation)
+### [Installation](#installation-1)
 
-[Running the app](#running-the-app)
+### [Running the Server](#running-the-server-1)
+
+### [Documentation](#documentation-1)
+
+### [Unauthenticated Calls](#unauthenticated-calls-1)
+
+### [Authenticated Calls](#authenticated-calls-1)
+
+### [Error Codes](#error-codes-1)
 
 # Description
 Node server for SlugNote
@@ -22,7 +30,7 @@ Node server for SlugNote
 - Run `git clone https://*USER*@github.com/slugnote/slugnote.git`
 - Run `npm install` in the 'slugnote' directory
 
-# Running the app
+# Running the Server
     node server
 
 # Documentation
@@ -266,3 +274,7 @@ with the body of the request being a valid JSON object (Like examples)
             ] }
         }
     }
+
+## Error Codes
+
+#### To be filled out
