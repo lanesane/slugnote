@@ -1,7 +1,7 @@
 SlugNote Server
 ===
 
-# README.md Contents
+## README.md Contents
 #### [Description](#description-1)
 
 #### [Requirements](#requirements-1)
