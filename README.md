@@ -2,7 +2,10 @@ SlugNote Server
 ===
 
 # Table of Contents
-[Description](#Description)
+[Description](#description)
+[Requirements](#requirements)
+[Installation](#installation)
+[Running the app](#running-the-app)
 
 # Description
 Node server for SlugNote
