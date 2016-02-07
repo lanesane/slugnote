@@ -16,7 +16,6 @@ SlugNote Server
 
 #### [Unauthenticated Calls](#unauthenticated-calls-1)
 * [getTokenTTL](#gettokenttl)
-
 #### [Authenticated Calls](#authenticated-calls-1)
 * [createNote](#createnote)
 * [getNoteInfo](#getnoteinfo)
@@ -24,8 +23,7 @@ SlugNote Server
 * [createUser](#createuser)
 * [getUserInfo](#getuserinfo)
 * [createUniversity](#createuniversity)
-* [getUniversityList](#list)
-
+* [getUniversityList](#getuniversitylist)
 #### [Error Codes](#error-codes-1)
 
 
@@ -263,7 +261,7 @@ with the body of the request being a valid JSON object (Like examples)
     }
 
 
-### list
+### getUniversityList
 #### URI
 `university/list`
 
