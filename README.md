@@ -1,22 +1,33 @@
 SlugNote Server
 ===
 
-# Table of Contents
-### [Description](#description-1)
+# README.md Contents
+#### [Description](#description-1)
 
-### [Requirements](#requirements-1)
+#### [Requirements](#requirements-1)
 
-### [Installation](#installation-1)
+#### [Installation](#installation-1)
 
-### [Running the Server](#running-the-server-1)
+#### [Running the Server](#running-the-server-1)
 
-### [Documentation](#documentation-1)
+#### [Documentation](#documentation-1)
+* [Usage](#usage)
+    * [With 'curl'](#with-curl)
 
-### [Unauthenticated Calls](#unauthenticated-calls-1)
+#### [Unauthenticated Calls](#unauthenticated-calls-1)
+* [getTokenTTL](#gettokenttl)
 
-### [Authenticated Calls](#authenticated-calls-1)
+#### [Authenticated Calls](#authenticated-calls-1)
+* [createNote](#createnote)
+* [getNoteInfo](#getnoteinfo)
+* [getNote](#getnote)
+* [createUser](#createuser)
+* [getUserInfo](#getuserinfo)
+* [createUniversity](#createuniversity)
+* [getUniversityList](#list)
 
-### [Error Codes](#error-codes-1)
+#### [Error Codes](#error-codes-1)
+
 
 # Description
 Node server for SlugNote
