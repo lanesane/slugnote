@@ -12,7 +12,7 @@ SlugNote Server
 
 #### [Documentation](#documentation-1)
 * [Usage](#usage)
-    * [With 'curl'](#with-curl)
+    * [With curl](#with-curl)
 * [Unauthenticated Calls](#unauthenticated-calls)
     * [getTokenTTL](#gettokenttl)
 * [Authenticated Calls](#authenticated-calls)
