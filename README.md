@@ -1,6 +1,9 @@
 SlugNote Server
 ===
 
+# Table of Contents
+[Description](#Description)
+
 # Description
 Node server for SlugNote
 
